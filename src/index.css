@@ -57,23 +57,3 @@ button {
   display: flex;
   gap: 15px;
 }
-
-.deliveries {
-  display: flex;
-  width: 600px;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.delivery {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  flex: 1;
-  padding: 20px;
-}
-
-.delivery__links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}

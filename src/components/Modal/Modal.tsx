@@ -22,8 +22,14 @@ const Modal = ({ code, isError = false }: ModalProps): React.ReactElement => {
     case "new-ok":
       message = "Successfully delivered";
       break;
-    case "error":
+    case "new-error":
       message = "Error on delivery";
+      break;
+    case "delete-ok":
+      message = "Delivery deleted successfully";
+      break;
+    case "delete-error":
+      message = "Error on deleting delivery";
       break;
     default:
       message = "";

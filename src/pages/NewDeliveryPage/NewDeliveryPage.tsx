@@ -28,7 +28,7 @@ const NewDeliveryPage = (): React.ReactElement => {
     }
 
     setSearchParams({
-      message: "error",
+      message: "new-error",
       error: "",
     });
   };

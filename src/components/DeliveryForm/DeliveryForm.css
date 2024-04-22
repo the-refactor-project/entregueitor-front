@@ -22,3 +22,9 @@
   background-color: #111;
   color: #fff;
 }
+
+.button--icon {
+  background-color: transparent;
+  color: #000;
+  padding: 0;
+}
