@@ -121,6 +121,7 @@ const DeliveryForm = ({
           className="form__control"
           value={newDeliveryData.week}
           onChange={changeNewDeliveryData}
+          required
         >
           <option value="">Choose week number</option>
           <option>1</option>

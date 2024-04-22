@@ -10,6 +10,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import DeliveriesPage from "./pages/DeliveriesPage";
 import App from "./components/App";
 import NewDeliveryPage from "./pages/NewDeliveryPage";
+import UiContextProvider from "./context/UiContextProvider";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UiContextProvider>
+      <RouterProvider router={router} />
+    </UiContextProvider>
   </React.StrictMode>
 );

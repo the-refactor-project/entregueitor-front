@@ -1,8 +1,12 @@
 import { Link, Outlet, useSearchParams } from "react-router-dom";
 import Modal from "../Modal";
+import Loading from "../Loading";
+import { useContext } from "react";
+import { UiContext } from "@/context/UiContext";
 
 const App = (): React.ReactElement => {
   const [searchParams] = useSearchParams();
+  const { isLoading } = useContext(UiContext);
 
   return (
     <>
@@ -24,6 +28,7 @@ const App = (): React.ReactElement => {
           <Outlet />
         </main>
       </div>
+      {isLoading && <Loading />}
       {searchParams.has("message") && (
         <Modal
           code={searchParams.get("message")!}
