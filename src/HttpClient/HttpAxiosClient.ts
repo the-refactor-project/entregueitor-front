@@ -21,7 +21,12 @@ export class HttpAxiosClient implements HttpClient {
     throw new Error("Method not implemented");
   }
 
-  createDelivery(newDelivery: NewDelivery): Promise<void> {
-    throw new Error("Method not implemented");
+  async createDelivery(newDelivery: NewDelivery): Promise<Delivery> {
+    const { data } = await axios.post<{ delivery: Delivery }>(
+      "deliveries",
+      newDelivery
+    );
+
+    return data.delivery;
   }
 }

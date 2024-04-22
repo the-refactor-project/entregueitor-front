@@ -1,5 +1,6 @@
 import { HttpClient } from "@/HttpClient/types";
 import { UiContext } from "@/context/UiContext";
+import { Delivery, NewDelivery } from "@/types";
 import { useCallback, useContext } from "react";
 
 const useDeliveries = (httpClient: HttpClient) => {
@@ -15,8 +16,24 @@ const useDeliveries = (httpClient: HttpClient) => {
     return deliveries;
   }, [httpClient, setIsLoading]);
 
+  const createDelivery = useCallback(
+    async (newDelivery: NewDelivery): Promise<Delivery> => {
+      setIsLoading(true);
+
+      try {
+        return await httpClient.createDelivery(newDelivery);
+      } catch (error) {
+        throw new Error("Error on creating delivery");
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [httpClient, setIsLoading]
+  );
+
   return {
     getDeliveries,
+    createDelivery,
   };
 };
 

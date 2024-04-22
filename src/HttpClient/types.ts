@@ -7,5 +7,5 @@ export interface HttpClient {
     owner: string,
     week: number
   ) => Promise<void>;
-  createDelivery: (newDelivery: NewDelivery) => Promise<void>;
+  createDelivery: (newDelivery: NewDelivery) => Promise<Delivery>;
 }
