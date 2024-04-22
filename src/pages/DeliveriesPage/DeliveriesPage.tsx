@@ -11,7 +11,9 @@ const DeliveriesPage = (): React.ReactElement => {
   const [, setSearchParams] = useSearchParams();
   const { setIsLoading } = useContext(UiContext);
   const httpAxiosClient = useRef(new HttpAxiosClient());
-  const { getDeliveries } = useDeliveries(httpAxiosClient.current);
+  const { getDeliveries, deleteDelivery } = useDeliveries(
+    httpAxiosClient.current
+  );
 
   useEffect(() => {
     (async () => {
@@ -21,44 +23,40 @@ const DeliveriesPage = (): React.ReactElement => {
     })();
   }, [getDeliveries]);
 
-  const deleteDelivery = async (
+  const onDeleteDelivery = async (
     deliveryId: number,
     deliveryOwner: string,
     deliveryWeek: number
   ) => {
     setIsLoading(true);
 
-    const response = await fetch(
-      `${
-        import.meta.env.VITE_API_URL
-      }/deliveries?owner=${deliveryOwner}&week=${deliveryWeek}`,
-      {
-        method: "DELETE",
-      }
-    );
+    try {
+      deleteDelivery(deliveryOwner, deliveryWeek);
 
-    setIsLoading(false);
+      setSearchParams({
+        message: "delete-ok",
+      });
 
-    if (response.status !== 200) {
+      setDeliveries((deliveries) =>
+        deliveries.filter((delivery) => delivery.id !== deliveryId)
+      );
+    } catch (error) {
       setSearchParams({
         message: "delete-error",
         error: "",
       });
+    } finally {
+      setIsLoading(false);
     }
-
-    setSearchParams({
-      message: "delete-ok",
-    });
-
-    setDeliveries((deliveries) =>
-      deliveries.filter((delivery) => delivery.id !== deliveryId)
-    );
   };
 
   return (
     <>
       <h2>Deliveries</h2>
-      <DeliveriesList deliveries={deliveries} deleteDelivery={deleteDelivery} />
+      <DeliveriesList
+        deliveries={deliveries}
+        deleteDelivery={onDeleteDelivery}
+      />
     </>
   );
 };

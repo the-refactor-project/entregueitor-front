@@ -31,9 +31,21 @@ const useDeliveries = (httpClient: HttpClient) => {
     [httpClient, setIsLoading]
   );
 
+  const deleteDelivery = useCallback(
+    async (owner: string, week: number): Promise<void> => {
+      setIsLoading(true);
+
+      await httpClient.deleteDelivery(owner, week);
+
+      setIsLoading(false);
+    },
+    [httpClient, setIsLoading]
+  );
+
   return {
     getDeliveries,
     createDelivery,
+    deleteDelivery,
   };
 };
 

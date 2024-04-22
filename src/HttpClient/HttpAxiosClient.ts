@@ -13,12 +13,13 @@ export class HttpAxiosClient implements HttpClient {
     return data.deliveries;
   }
 
-  deleteDelivery(
-    deliveryId: number,
-    owner: string,
-    week: number
-  ): Promise<void> {
-    throw new Error("Method not implemented");
+  async deleteDelivery(owner: string, week: number): Promise<void> {
+    await axios.delete("deliveries", {
+      params: {
+        owner,
+        week,
+      },
+    });
   }
 
   async createDelivery(newDelivery: NewDelivery): Promise<Delivery> {
