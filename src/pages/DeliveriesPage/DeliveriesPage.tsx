@@ -1,6 +1,6 @@
 import { HttpAxiosClient } from "@/HttpClient/HttpAxiosClient";
 import DeliveriesList from "@/components/DeliveriesList";
-import { UiContext } from "@/context/UiContext";
+import { UiContext } from "@/context/ui/UiContext";
 import useDeliveries from "@/hooks/useDeliveries";
 import { Delivery } from "@/types";
 import { useContext, useEffect, useRef, useState } from "react";

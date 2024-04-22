@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NewDeliveryData } from "./types";
 import "./DeliveryForm.css";
+import { AuthContext } from "@/context/auth/AuthContext";
 
 interface DeliveryFormProps {
   createDelivery: (deliveryData: NewDeliveryData) => void;
@@ -10,6 +11,7 @@ const DeliveryForm = ({
   createDelivery,
 }: DeliveryFormProps): React.ReactElement => {
   const members = ["Clara", "Eric", "Marcos"];
+  const { student } = useContext(AuthContext);
 
   const newBlankDelivery: NewDeliveryData = {
     owner: "",
@@ -37,6 +39,13 @@ const DeliveryForm = ({
       [elementId]: elementValue,
     });
   };
+
+  useEffect(() => {
+    setNewDeliveryData((newDeliveryData) => ({
+      ...newDeliveryData,
+      owner: student,
+    }));
+  }, [student]);
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

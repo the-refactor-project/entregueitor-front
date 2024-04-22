@@ -1,5 +1,5 @@
 import { HttpClient } from "@/HttpClient/types";
-import { UiContext } from "@/context/UiContext";
+import { UiContext } from "@/context/ui/UiContext";
 import { Delivery, NewDelivery } from "@/types";
 import { useCallback, useContext } from "react";
 

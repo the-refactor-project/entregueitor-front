@@ -1,8 +1,9 @@
-import { Link, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import Modal from "../Modal";
 import Loading from "../Loading";
 import { useContext } from "react";
-import { UiContext } from "@/context/UiContext";
+import { UiContext } from "@/context/ui/UiContext";
+import Header from "../Header";
 
 const App = (): React.ReactElement => {
   const [searchParams] = useSearchParams();
@@ -11,19 +12,7 @@ const App = (): React.ReactElement => {
   return (
     <>
       <div className="container">
-        <header className="main-header">
-          <h1>Entregueitor</h1>
-          <nav className="main-navigation">
-            <ul>
-              <li>
-                <Link to="/">Deliveries</Link>
-              </li>
-              <li>
-                <Link to="/new">New delivery</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <Header />
         <main className="main-content">
           <Outlet />
         </main>
