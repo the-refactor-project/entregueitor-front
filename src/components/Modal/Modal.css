@@ -1,0 +1,18 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: #fffe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal__text {
+    padding: 20px;
+    border: 1px solid #222;
+  }
+}
+
+.modal--error .modal__text {
+  border-color: #f00;
+  color: #f00;
+}

@@ -16,3 +16,5 @@ export interface Delivery {
   firstTeammateName: string;
   secondTeammateName: string;
 }
+
+export type NewDelivery = Omit<Delivery, "id">;
