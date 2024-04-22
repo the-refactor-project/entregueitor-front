@@ -1,30 +1,25 @@
+import { HttpAxiosClient } from "@/HttpClient/HttpAxiosClient";
 import DeliveriesList from "@/components/DeliveriesList";
 import { UiContext } from "@/context/UiContext";
+import useDeliveries from "@/hooks/useDeliveries";
 import { Delivery } from "@/types";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const DeliveriesPage = (): React.ReactElement => {
   const [deliveries, setDeliveries] = useState<Delivery[]>([]);
   const [, setSearchParams] = useSearchParams();
   const { setIsLoading } = useContext(UiContext);
+  const httpAxiosClient = useRef(new HttpAxiosClient());
+  const { getDeliveries } = useDeliveries(httpAxiosClient.current);
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
+      const deliveries = await getDeliveries();
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/deliveries`
-      );
-      const deliveriesApi = (await response.json()) as {
-        deliveries: Delivery[];
-      };
-
-      setIsLoading(false);
-
-      setDeliveries(deliveriesApi.deliveries);
+      setDeliveries(deliveries);
     })();
-  }, [setIsLoading]);
+  }, [getDeliveries]);
 
   const deleteDelivery = async (
     deliveryId: number,
