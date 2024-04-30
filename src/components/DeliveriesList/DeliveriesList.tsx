@@ -32,6 +32,8 @@ const DeliveriesList = ({
                   owner,
                   frontRepoUrl,
                   frontProductionUrl,
+                  backRepoUrl,
+                  backProductionUrl,
                   sprint1TrelloUrl,
                   sprint2TrelloUrl,
                   firstTeammateName,
@@ -44,21 +46,41 @@ const DeliveriesList = ({
                       {!!secondTeammateName && ` - ${secondTeammateName}`}
                     </h3>
                     <ul className="delivery__links">
-                      <li>
-                        <a href={frontRepoUrl} target="_blank">
-                          Repo front
-                        </a>
-                      </li>
-                      <li>
-                        <a href={frontProductionUrl} target="_blank">
-                          Production front
-                        </a>
-                      </li>
-                      <li>
-                        <a href={sprint1TrelloUrl} target="_blank">
-                          Sprint 1 Trello
-                        </a>
-                      </li>
+                      {!!frontRepoUrl && (
+                        <li>
+                          <a href={frontRepoUrl} target="_blank">
+                            Repo front
+                          </a>
+                        </li>
+                      )}
+                      {!!frontProductionUrl && (
+                        <li>
+                          <a href={frontProductionUrl} target="_blank">
+                            Production front
+                          </a>
+                        </li>
+                      )}
+                      {!!backRepoUrl && (
+                        <li>
+                          <a href={backRepoUrl} target="_blank">
+                            Repo back
+                          </a>
+                        </li>
+                      )}
+                      {!!backProductionUrl && (
+                        <li>
+                          <a href={backProductionUrl} target="_blank">
+                            Production back
+                          </a>
+                        </li>
+                      )}
+                      {!!sprint1TrelloUrl && (
+                        <li>
+                          <a href={sprint1TrelloUrl} target="_blank">
+                            Sprint 1 Trello
+                          </a>
+                        </li>
+                      )}
                       {!!sprint2TrelloUrl && (
                         <li>
                           <a href={sprint2TrelloUrl} target="_blank">
