@@ -21,14 +21,11 @@ const LoginPage = (): React.ReactElement => {
     <>
       <h2>¿Quién eres?</h2>
       <div className="login">
-        <button className="button" onClick={() => setStudentName("Clara")}>
-          Clara
+        <button className="button" onClick={() => setStudentName("Alexis")}>
+          Alexis
         </button>
-        <button className="button" onClick={() => setStudentName("Eric")}>
-          Eric
-        </button>
-        <button className="button" onClick={() => setStudentName("Marcos")}>
-          Marcos
+        <button className="button" onClick={() => setStudentName("Guillem")}>
+          Guillem
         </button>
       </div>
     </>

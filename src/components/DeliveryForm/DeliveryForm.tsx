@@ -10,7 +10,7 @@ interface DeliveryFormProps {
 const DeliveryForm = ({
   createDelivery,
 }: DeliveryFormProps): React.ReactElement => {
-  const members = ["Clara", "Eric", "Marcos"];
+  const members = ["Alexis", "Guillem"];
   const { student } = useContext(AuthContext);
 
   const newBlankDelivery: NewDeliveryData = {
