@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { NewDeliveryData } from "./types";
-import "./DeliveryForm.css";
 import { AuthContext } from "@/context/auth/AuthContext";
+import "./DeliveryForm.css";
 
 interface DeliveryFormProps {
   createDelivery: (deliveryData: NewDeliveryData) => void;
 }
 
+const members = import.meta.env.VITE_STUDENTS.split(",");
+
 const DeliveryForm = ({
   createDelivery,
 }: DeliveryFormProps): React.ReactElement => {
-  const members = ["Alexis", "Guillem"];
   const { student } = useContext(AuthContext);
 
   const newBlankDelivery: NewDeliveryData = {
